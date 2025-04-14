@@ -14,4 +14,7 @@ ENV JAVA_TOOL_OPTIONS="-XX:TieredStopAtLevel=1 -noverify -Xlog:gc*,safepoint=deb
 ENV GC_CONTAINER_OPTIONS="-XX:+UseShenandoahGC"
 ENV TZ="Asia/Jakarta"
 
-COPY target/*.jar /deployments/application.jar
+COPY --from=build /app/target/*.jar apps.jar
+
+EXPOSE 8080
+ENTRYPOINT ["java", "-jar", "apps.jar"]
