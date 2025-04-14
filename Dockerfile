@@ -8,11 +8,6 @@ FROM image-registry.openshift-image-registry.svc:5000/openshift/java-runtime:ope
 WORKDIR /app
 
 LABEL BASE_IMAGE="image-registry.openshift-image-registry.svc:5000/openshift/java-runtime:openjdk-17-ubi8"
-LABEL JAVA_VERSION="17"
-
-ENV JAVA_TOOL_OPTIONS="-XX:TieredStopAtLevel=1 -noverify -Xlog:gc*,safepoint=debug:file=/tmp/gc.log.%p:time,uptime:filecount=5,filesize=50M -XX:+HeapDumpOnOutOfMemoryError -XX:HeapDumpPath=/tmp/"
-ENV GC_CONTAINER_OPTIONS="-XX:+UseShenandoahGC"
-ENV TZ="Asia/Jakarta"
 
 COPY --from=build /app/target/*.jar apps.jar
 
