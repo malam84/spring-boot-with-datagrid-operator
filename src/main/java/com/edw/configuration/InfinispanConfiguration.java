@@ -21,8 +21,8 @@ public class InfinispanConfiguration {
     public RemoteCacheManager remoteCacheManager() {
         return new RemoteCacheManager(
                 new ConfigurationBuilder()
-                        .addServers("datagrid-cluster.datagrid-ns.svc.cluster.local:11222")
-                        .security().authentication().username("developer").password("kvRW9vqINXWJzUZp")
+                        .addServers("epf-datagrid-poc.datagrid.svc.cluster.local:11222")
+                        .security().authentication().username("developer").password("tYxtberWYosXk9aY")
                         .clientIntelligence(ClientIntelligence.HASH_DISTRIBUTION_AWARE)
                         .marshaller(new GenericJBossMarshaller())
                         .addJavaSerialWhiteList(".*")
